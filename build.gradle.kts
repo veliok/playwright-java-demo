@@ -1,5 +1,6 @@
 plugins {
     application
+    id "com.microsoft.playwright" version "1.54.0"
 }
 
 repositories {
