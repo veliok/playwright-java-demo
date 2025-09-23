@@ -1,11 +1,5 @@
 # playwright-java-demo
 
-This program fetches smartphones that are on sale at DNA.fi and prints them to console.
+Program that fetches smartphones that are on sale at DNA.fi and prints them to console. Uses Playwright for the scraping.
 
-## How to use
-
-Repository should include everything Gradle needs, so just:
-
-```
-$ gradlew.bat run
-```
+Also learning GitHub Actions, so this project should be build by Gradle automatically.
