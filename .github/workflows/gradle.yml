@@ -23,6 +23,9 @@ jobs:
         java-version: '21'
         distribution: 'temurin'
 
+    - name: Install Playwright browsers
+      run: ./gradlew playwrightInstall
+
     - name: Make gradlew executable
       run: chmod +x ./gradlew
 
