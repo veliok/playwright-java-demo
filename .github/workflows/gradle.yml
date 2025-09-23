@@ -23,18 +23,7 @@ jobs:
           node-version: 20
 
       - name: Install dependencies for Playwright browsers
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y \
-            libgtk-3-0 libx11-xcb1 libxcomposite1 libxcursor1 libxdamage1 libxext6 \
-            libxfixes3 libxi6 libxrandr2 libxrender1 libxss1 libxtst6 \
-            libnss3 libasound2 libatk1.0-0 libcups2 libdrm2 libgbm1 libpangocairo-1.0-0 \
-            libpango-1.0-0 libglib2.0-0 libsecret-1-0 libwoff1 libvpx5 libopus0 \
-            gstreamer1.0-plugins-base gstreamer1.0-plugins-good \
-            gstreamer1.0-plugins-ugly gstreamer1.0-libav
-
-      - run: npm install -g playwright
-      - run: npx playwright install firefox chromium webkit
+        run: npx playwright install --with-deps
 
       - run: chmod +x ./gradlew
       - run: ./gradlew clean build
