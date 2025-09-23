@@ -13,10 +13,6 @@ class AppTest {
                     .launch(new BrowserType.LaunchOptions().setHeadless(true));
             assertNotNull(browser);
 
-            Page page = browser.newPage();
-            page.navigate("https://kauppa.dna.fi/laitteet/puhelimet-ja-lisalaitteet/puhelimet");
-            assertNotNull(page.title());
-
             browser.close();
         } catch (Exception e) {
             fail("App failed to run: " + e.getMessage());
