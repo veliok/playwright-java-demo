@@ -1,4 +1,4 @@
-name: Java CI with Gradle
+name: Java Playwright CI
 
 on:
   push:
@@ -7,39 +7,30 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build:
-
+  build-and-test:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-    - name: Set up JDK 21
-      uses: actions/setup-java@v4
-      with:
-        java-version: '21'
-        distribution: 'temurin'
+      - uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
 
-    - name: Make gradlew executable
-      run: chmod +x ./gradlew
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 20
 
-    - name: Install Playwright browsers
-      run: npx playwright install firefox
-
-    - name: Install dependencies for Playwright browsers
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y \
+      - run: sudo apt-get update && sudo apt-get install -y \
           libgtk-4-1 libgraphene-1.0-0 libvpx9 libevent-2.1-7 libopus0 \
-          gstreamer1.0-plugins-base gstreamer1.0-plugins-good gstreamer1.0-plugins-bad \
-          gstreamer1.0-plugins-ugly gstreamer1.0-libav gstreamer1.0-tools \
-          libharfbuzz-icu0 libsecret-1-0 libhyphen0 libavif16
+          gstreamer1.0-plugins-base gstreamer1.0-plugins-good \
+          gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly \
+          gstreamer1.0-libav gstreamer1.0-tools libharfbuzz-icu0 \
+          libsecret-1-0 libhyphen0 libavif16
 
-    - name: Install Playwright browsers
-      run: ./gradlew playwrightInstall
+      - run: npm install -g playwright
+      - run: npx playwright install firefox chromium webkit
 
-    - name: Build and run tests
-      run: ./gradlew clean build
+      - run: chmod +x ./gradlew
+      - run: ./gradlew clean build
