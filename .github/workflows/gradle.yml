@@ -24,7 +24,7 @@ jobs:
         distribution: 'temurin'
 
     - name: Install Playwright browsers
-      run: ./gradlew playwrightInstall
+      run: npx playwright install firefox
 
     - name: Make gradlew executable
       run: chmod +x ./gradlew
