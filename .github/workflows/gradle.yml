@@ -33,11 +33,10 @@ jobs:
       run: |
         sudo apt-get update
         sudo apt-get install -y \
-          libgtk-4-1 libgraphene-1.0-0 libwoff2-1 libvpx9 libevent-2.1-7 libopus0 \
+          libgtk-4-1 libgraphene-1.0-0 libvpx9 libevent-2.1-7 libopus0 \
           gstreamer1.0-plugins-base gstreamer1.0-plugins-good gstreamer1.0-plugins-bad \
           gstreamer1.0-plugins-ugly gstreamer1.0-libav gstreamer1.0-tools \
-          libharfbuzz-icu0 libsecret-1-0 libhyphen0 libx264-163 \
-          libavif16 libgles2-mesa
+          libharfbuzz-icu0 libsecret-1-0 libhyphen0 libavif16
 
     - name: Install Playwright browsers
       run: ./gradlew playwrightInstall
